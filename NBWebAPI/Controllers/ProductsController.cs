@@ -22,7 +22,7 @@ namespace NBWebAPI.Controllers
         public IActionResult GetList()
         {
             var result = _productService.GetList();
-            if (result.Success)
+            if (result.Success == true)
             {
                 return Ok(result.Data);
             }
