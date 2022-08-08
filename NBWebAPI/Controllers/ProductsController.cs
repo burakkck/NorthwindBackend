@@ -32,7 +32,7 @@ namespace NBWebAPI.Controllers
         }
 
         [HttpGet(template: "getlistbycategory")]
-        public IActionResult GetListByCategory(int categoryId)
+        public  IActionResult GetListByCategory(int categoryId)
         {
             var result = _productService.GetListByCategory(categoryId);
             if (result.Success)
