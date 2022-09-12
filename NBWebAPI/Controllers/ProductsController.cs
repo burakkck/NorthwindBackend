@@ -85,5 +85,14 @@ namespace NBWebAPI.Controllers
             }
             return BadRequest(result.Message);
         }
+
+        [HttpPost(template: "transaction")]
+        public IActionResult TransacitonTest(Product product) {
+            var result = _productService.TransactionalOperation(product);
+            if (result.Success) {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
+        }
     }
 }

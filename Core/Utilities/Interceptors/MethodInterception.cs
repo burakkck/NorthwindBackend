@@ -4,7 +4,7 @@ using System.Text;
 using Castle.DynamicProxy;
 
 namespace Core.Utilities.Interceptors {
-    public class MethodInterception : MethodInterceptionBaseAttribute {
+    public abstract class MethodInterception : MethodInterceptionBaseAttribute {
         protected virtual void OnBefore(IInvocation invocation) {}
         protected virtual void OnAfter(IInvocation invocation) {}
         protected virtual void OnException(IInvocation invocation) {}
