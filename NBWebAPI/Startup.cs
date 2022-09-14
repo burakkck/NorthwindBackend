@@ -38,7 +38,7 @@ namespace NBWebAPI
             {
                 options.AddPolicy(
                     name: "AllowOrigin",
-                    configurePolicy: builder => builder.WithOrigins("http://localhost:3000")
+                    configurePolicy: builder => builder.WithOrigins("http://localhost:44355")
                 ); 
             });
             IdentityModelEventSource.ShowPII = true;
@@ -74,7 +74,7 @@ namespace NBWebAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:44355").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
