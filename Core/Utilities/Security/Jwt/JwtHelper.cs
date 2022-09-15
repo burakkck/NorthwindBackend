@@ -62,5 +62,29 @@ namespace Core.Utilities.Security.Jwt
             claims.AddRoles(operationClaims.Select(c=>c.Name).ToArray());
             return claims;
         }
+
+        public bool IsTokenValid(string key, string issuer, string token)
+        {
+            var mySecret = Encoding.UTF8.GetBytes(key);
+            var mySecurityKey = new SymmetricSecurityKey(mySecret);
+            var tokenHandler = new JwtSecurityTokenHandler();
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidIssuer = issuer,
+                        ValidAudience = issuer,
+                        IssuerSigningKey = mySecurityKey,
+                    }, out SecurityToken validatedToken
+                );
+            } catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
